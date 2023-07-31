@@ -77,15 +77,77 @@ Route::get('/', function () {
  * chunck method
  */
 
- $user = DB::table('orders')->orderBy('id')->chunk('15',function($orders){
-   dd($orders);
- });
-
+//  $user = DB::table('orders')->orderBy('id')->chunk('15',function($orders){
+  
+//  });
+//  dd($user);
 // echo"<pre>"; print_r($user); exit;
 
+// $insert = DB::table('testtable')->insert([
+// "test_name"=>"nithish",
+// "test_email"=>"nithish@gmail.com",
+// "test_city"=>"salem",
+// "test_salary"=>5000,
+// "test_datetime"=> date("Y-m-d H:i:s")
+// ]);
 
-   dd($users);
-});
+// $insert = DB::table('orders_products')->insert([
+//   "order_id"=>4,
+//   "product_name"=>"product_five",
+//   "product_price"=>1450,
+//   ]);
+
+/**
+ * count function
+ */
+// $count = DB::table('test')->count();
+// $max = DB::table('test')->sum('test_salary');
+
+// if(DB::table('test')->where("test_name","sam")->doesntExist()){
+//   dd("yes");
+// }else{
+//   return "no";
+// }
+
+/**
+ * select specific element
+ */
+
+//  $select = DB::table('test')->select("test_name as name","test_email as email")->get();
+// $query = DB::table('test')->select("test_name as name");
+// $select = $query->addSelect("test_email as email")->get();
+// $select = DB::table('test')->select(DB::raw("test_name as name,sum(test_salary) as total_salary,avg(test_salary) as average_salary"))->groupBy("test_name")->get();
+
+
+// $join = DB::table('test_table')->join(
+//   "orders","test_table.id","=","orders.customer_id"
+//   )->Join("orders_products","orders.id","=","orders_products.order_id")
+//   ->select("test_table.*","orders.*","orders_products.*")->get();
+
+  // $query = DB::table('orders')->whereNot(function($qa){
+  //   $qa->where("orders.customer_id","1")->orWhere("orders.customer_id","7");
+  // })->get();
+
+  // $query = DB::table("orders")->select(DB::raw("customer_id,sum(order_amt) as total_amt"))->having("customer_id","<",5)->groupBy('customer_id')->get();
+
+    // $join = DB::table('test_table')->joinSub($query,"orders",function($join){
+    //   $join->on("test_table.id","=","orders.customer_id");
+    // })->get();
+
+    // $update = DB::table('orders')->where("order_name","ni_order")->update(['order_amt'=>3333]);
+  //  $update = DB::table('orders')->decrement('order_amt',4,['customer_id'=>1]);
+  // $delete = DB::table('orders')->where("order_amt",600)->delete();
+  // $data = DB::table('orders')->where('order_amt', '>', 1000)->dumpRawSql();
+  
+
+  
+  
+
+
+
+
+ });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

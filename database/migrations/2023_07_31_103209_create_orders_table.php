@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_num');
-            $table->decimal('ord_amt');
-            $table->decimal('advance_amt');
-            $table->timestamp('ord_date');
-            $table->string('cust_code');
-            $table->string('agent_code');
-            $table->string('ord_description');
-            $table->timestamps();
-
+            $table->integer("customer_id")->unique();
+            $table->string("order_name")->nullable();
+            $table->decimal("order_amt",10,2)->default(0.00);
+            $table->tinyInteger("order_status")->comment(
+            "1->pending,2->approved,3->delivered,4->closed")->default(1);
+            $table->tinyInteger("status")
+            ->comment("1->active,2->inactive,3->deleted")->default(1);
+           
         });
     }
 
